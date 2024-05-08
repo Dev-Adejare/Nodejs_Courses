@@ -84,6 +84,7 @@ const server = http.createServer((req, res) => {
             res.end();
             break
             default:
+                serverFile(path.join(__dirname, 'views', '404.html'), 'text/html', res);
   }
 }});
 

@@ -77,11 +77,22 @@ const server = http.createServer((req, res) => {
   }
 
   if (!extension && req.url.slice(-1) !== "/") filepath += ".html";
+    //the file path = Users/user/desktop/my web/nodejs/lesson-4/views/me.html or the file path = Users/user/desktop/my web/nodejs/lesson-4/views/me/
+    //for example User/user/desktop/my web/nodejs/lesson-4/me add .html because there is no extension name and there no '/' at the end
+
+
 
   const fileExists = fs.existsSync(filepath);
+  //the file path = Users/user/desktop/my web/nodejs/lesson-4/views/me.html or the file path = Users/user/desktop/my web/nodejs/lesson-4/views/me.html is created
+  //it checks our computer to see if this path is in the computer
+
 
   if (fileExists) {
     serverFile(filepath, contentType, res);
+    //if the filepath exists
+    //now serve the everythingv about that file to the client
+
+
   } else {
     switch (path.parse(filepath).base) {
       case "old-page.html":

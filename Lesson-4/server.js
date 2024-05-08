@@ -11,22 +11,19 @@ const myEmitter = new Emitter();
 
 const PORT = process.env.PORT || 3500;
 
-const serverFile = async ( filepath, contentType, response) => {
-
-try {
-    const data = await fsPromises.readFile(filepath, 'utf8');
-    response.writeHead(200, {'content-Type':contentType});
+const serverFile = async (filepath, contentType, response) => {
+  try {
+    const data = await fsPromises.readFile(filepath, "utf8");
+    response.writeHead(200, { "content-Type": contentType });
     response.end(data);
-    
-} catch (error) {
+  } catch (error) {
     console.log(error);
     res.statusCode = 500;
     res.end();
-    
-}
-}
+  }
+};
 
-const server = http.createServer((req, res) => {
+const server = http.createServer((req, res) => { 
   console.log(req.url, req.method);
 
   const extension = path.extname(req.url);
@@ -68,25 +65,25 @@ const server = http.createServer((req, res) => {
     filepath = path.join(__dirname, req.url);
   }
 
-  if(!extension && req.url.slice(-1) !== '/') filepath += '.html';
+  if (!extension && req.url.slice(-1) !== "/") filepath += ".html";
 
-  const fileExists = fs.existsSync(filepath)
+  const fileExists = fs.existsSync(filepath);
 
-  if(fileExists) {
-
-  }else {
-    switch(path.parse(filepath).base) {
-        case 'old-page.html':
-            res.writeHead(301, { 'location': '/new-page.html' });
-            break
-            case 'www-page.html':
-            res.writeHead(301, { 'location': '/' });
-            res.end();
-            break
-            default:
-                serverFile(path.join(__dirname, 'views', '404.html'), 'text/html', res);
+  if (fileExists) {
+  } else {
+    switch (path.parse(filepath).base) {
+      case "old-page.html":
+        res.writeHead(301, { location: "/new-page.html" });
+        break;
+      case "www-page.html":
+        res.writeHead(301, { location: "/" });
+        res.end();
+        break;
+      default:
+        serverFile(path.join(__dirname, "views", "404.html"), "text/html", res);
+    }
   }
-}});
+});
 
 server.listen(PORT, () => console.log(`server running on port ${PORT}`));
 

@@ -3,21 +3,33 @@ const path = require("path");
 const fs = require("fs");
 const fsPromises = require("fs").promises;
 
-const logEvents = require("./logEvent");
+// const logEvents = require("./logEvent");
 const EventEmitter = require("events");
-class Emitter extends EventEmitter {}
+const logEvent = require("./logEvent");
+class MyEmitter extends EventEmitter {}
 
-const myEmitter = new Emitter();
+const emitter = new MyEmitter();
+emitter.on('log', (msg, fileName) => logEvent(msg, fileName));
 
 const PORT = process.env.PORT || 3500;
 
-const serverFile = async (filepath, contentType, response) => {
+const serveFile = async (filepath, contentType, response) => {
   try {
-    const data = await fsPromises.readFile(filepath, "utf8");
-    response.writeHead(200, { "content-Type": contentType });
-    response.end(data);
+    const rawdata = await fsPromises.readFile(
+      filepath,
+      !contentType.includes('image') ? "utf8" : ""
+    );
+    const data =
+      contentType === "application/json" ? JSON.parse(rawdata) : rawdata;
+    response.writeHead(filepath.includes("404.html") ? 404 : 200, {
+      "content-Type": contentType,
+    });
+    response.end(
+      contentType === "application/json" ? JSON.stringify(data) : data
+    );
   } catch (error) {
     console.log(error);
+    emitter.emit("log", `${error.name}: ${error.message}`, 'errorLog.txt');
     res.statusCode = 500;
     res.end();
   }
@@ -25,6 +37,7 @@ const serverFile = async (filepath, contentType, response) => {
 
 const server = http.createServer((req, res) => {
   console.log(req.url, req.method);
+  emitter.emit("log", `${req.url}\t${req.method}`, 'reqLog.txt');
 
   const extension = path.extname(req.url);
 
@@ -77,33 +90,28 @@ const server = http.createServer((req, res) => {
   }
 
   if (!extension && req.url.slice(-1) !== "/") filepath += ".html";
-    //the file path = Users/user/desktop/my web/nodejs/lesson-4/views/me.html or the file path = Users/user/desktop/my web/nodejs/lesson-4/views/me/
-    //for example User/user/desktop/my web/nodejs/lesson-4/me add .html because there is no extension name and there no '/' at the end
-
-
+  //the file path = Users/user/desktop/my web/nodejs/lesson-4/views/me.html or the file path = Users/user/desktop/my web/nodejs/lesson-4/views/me/
+  //for example User/user/desktop/my web/nodejs/lesson-4/me add .html because there is no extension name and there no '/' at the end
 
   const fileExists = fs.existsSync(filepath);
   //the file path = Users/user/desktop/my web/nodejs/lesson-4/views/me.html or the file path = Users/user/desktop/my web/nodejs/lesson-4/views/me.html is created
   //it checks our computer to see if this path is in the computer
 
-
   if (fileExists) {
-    serverFile(filepath, contentType, res);
+    serveFile(filepath, contentType, res);
     //if the filepath exists
     //now serve the everythingv about that file to the client
-
-
   } else {
     switch (path.parse(filepath).base) {
       case "old-page.html":
-        res.writeHead(301, { location: "/new-page.html" }); // writeHead=>This is a method used to set the HTTP response headers before sending the response body.
+        res.writeHead(301, { Location: "/new-page.html" }); // writeHead=>This is a method used to set the HTTP response headers before sending the response body.
         break;
       case "www-page.html":
-        res.writeHead(301, { location: "/" });
+        res.writeHead(301, { Location: "/" });
         res.end();
         break;
       default:
-        serverFile(path.join(__dirname, "views", "404.html"), "text/html", res);
+        serveFile(path.join(__dirname, "views", "404.html"), "text/html", res);
     }
   }
 });
@@ -112,6 +120,5 @@ server.listen(PORT, () => console.log(`server running on port ${PORT}`));
 
 // myEmitter.on("log", (msg) => logEvents(msg));
 
-// setTimeout(() => {
-//     myEmitter.emit("log", "Log event emitted")
-// }, 2000);
+
+

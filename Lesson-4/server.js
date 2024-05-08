@@ -23,7 +23,7 @@ const serverFile = async (filepath, contentType, response) => {
   }
 };
 
-const server = http.createServer((req, res) => { 
+const server = http.createServer((req, res) => {
   console.log(req.url, req.method);
 
   const extension = path.extname(req.url);
@@ -57,8 +57,19 @@ const server = http.createServer((req, res) => {
 
   if (contentType === "text/html" && req.url === "/") {
     filepath = path.join(__dirname, "views", "index.html");
+
+    //Users/user/desktop/my web/nodejs/lesson-4 => directory = _dirname
+    //views
+    //index.html
+    //whenever someone inputs '/' as the url
+    //the file path = Users/user/desktop/my web/nodejs/lesson-4/views/index.html
   } else if (contentType === "text/html" && req.url.slice(-1) === "/") {
     filepath = path.join(__dirname, "views", req.url);
+
+    //Users/user/desktop/my web/nodejs/lesson-4 => directory = _dirname
+    //views
+    //req.url when the '/' is the last character like '/old/' or '/me/'
+    //the file path = Users/user/desktop/my web/nodejs/lesson-4/views/me
   } else if (contentType === "text/html") {
     filepath = path.join(__dirname, "views", req.url);
   } else {
@@ -70,10 +81,11 @@ const server = http.createServer((req, res) => {
   const fileExists = fs.existsSync(filepath);
 
   if (fileExists) {
+    serverFile(filepath, contentType, res);
   } else {
     switch (path.parse(filepath).base) {
       case "old-page.html":
-        res.writeHead(301, { location: "/new-page.html" });
+        res.writeHead(301, { location: "/new-page.html" }); // writeHead=>This is a method used to set the HTTP response headers before sending the response body.
         break;
       case "www-page.html":
         res.writeHead(301, { location: "/" });

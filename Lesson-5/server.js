@@ -4,6 +4,14 @@ const path = require("path");
 
 const PORT = process.env.PORT || 3500;
 
+
+
+//Built-in-middleware, to handle url encoded data in other word ---> form Data, "cont`: application/x-www-form-urlencoded"
+app.use(express.urlencoded({ extended: false }));
+
+//to handle json responses
+app.use(express.json());
+
 //serving static files>>>>>>>>Static files are like image, txt, and css>>>>>>>>
 app.use(express.static(path.join(__dirname, "public")));
 

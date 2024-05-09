@@ -1,0 +1,27 @@
+This code is a basic Node.js HTTP server that listens for incoming requests and logs the requested URL and HTTP method to the console. Let's break it down line by line:
+
+1. const http = require("http");: This line imports the built-in Node.js http module, which allows you to create HTTP servers and handle HTTP requests and responses.
+
+2. const path = require("path");: This line imports the built-in Node.js path module, which provides utilities for working with file and directory paths.
+
+3. const fs = require("fs");: This line imports the built-in Node.js fs module, which provides functions for interacting with the file system.
+
+4. const fsPromises = require("fs").promises;: This line imports the promises-based version of the fs module. This version provides asynchronous file system operations using promises.
+
+5. const logEvents = require("./logEvent");: This line imports the logEvent module from the current directory. This module likely contains event logging functionality.
+
+6. const EventEmitter = require("events");: This line imports the built-in Node.js events module, which provides an EventEmitter class that allows you to create and emit custom events.
+
+7. class Emitter extends EventEmitter {}: This line creates a new class Emitter that extends the EventEmitter class. This class can be used to emit and handle custom events.
+
+8. const myEmitter = new Emitter();: This line creates a new instance of the Emitter class, named myEmitter, which can be used to emit and handle events.
+
+9. const PORT = process.env.PORT || 3500;: This line defines the port number on which the server will listen for incoming HTTP requests. It first checks if there's a port number specified in the environment variables (process.env.PORT) and uses that if available. Otherwise, it defaults to port 3500.
+
+10. const server = http.createServer((req, res) => { ... });: This line creates an HTTP server using the createServer method of the http module. The method takes a callback function as an argument, which will be invoked whenever a request is received by the server. The callback function takes two parameters: req (the request object) and res (the response object).
+
+11. console.log(req.url, req.method);: Inside the request callback function, this line logs the requested URL (req.url) and the HTTP method (req.method) of the incoming request to the console.
+
+12. `server.listen(PORT, () => console.log(server running on port ${PORT}));`: This line starts the HTTP server listening for incoming requests on the specified port (PORT). When the server starts listening, it executes the callback function, which logs a message indicating that the server is running and on which port.
+
+Overall, this code sets up a basic HTTP server in Node.js that logs incoming requests to the console. However, it does not send any response back to the client, so it's not fully functional as a web server.

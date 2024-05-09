@@ -28,9 +28,13 @@ app.get("/old-page(.html)?", (req, res) => {
 
 // ROUTE HANDLERS
 app.get("/hello(.html)?", (req, res, next) => {
-  console.log("Youre trying to access hello.html")
-  next()
-})
+  console.log("You're trying to access hello.html")
+  next();
+},
+(req, res) => {
+  res.send("Hello Kenny, Aderayo and Hidee!!")
+}
+)
 
 app.listen(PORT, () => console.log(`server running on port ${PORT}`));
 

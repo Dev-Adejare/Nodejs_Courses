@@ -29,12 +29,27 @@ app.get("/old-page(.html)?", (req, res) => {
 // ROUTE HANDLERS
 app.get("/hello(.html)?", (req, res, next) => {
   console.log("You're trying to access hello.html")
-  next();
+  next();                                         //Next is been used to send our response after we've input hello.
 },
 (req, res) => {
   res.send("Hello Kenny, Aderayo and Hidee!!")
 }
-)
+);
+
+const one = (req, res, next) => {
+  console.log("one");
+  next();
+}
+const two = (req, res, next) => {
+  console.log("two");
+  next();
+}
+const three = (req, res, next) => {
+  console.log("three");
+  res.send("Finished!!!");
+}
+
+app.get("/chain(.html)?", [one, two, three])
 
 app.listen(PORT, () => console.log(`server running on port ${PORT}`));
 

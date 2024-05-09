@@ -25,6 +25,13 @@ app.get("/old-page(.html)?", (req, res) => {
   res.redirect(301, "new-page.html")
 })
 
+
+// ROUTE HANDLERS
+app.get("/hello(.html)?", (req, res, next) => {
+  console.log("Youre trying to access hello.html")
+  next()
+})
+
 app.listen(PORT, () => console.log(`server running on port ${PORT}`));
 
 

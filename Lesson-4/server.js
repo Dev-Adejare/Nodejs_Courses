@@ -1,7 +1,6 @@
 const http = require("http");
 const path = require("path");
-const fs = require("fs");
-const fsPromises = require("fs").promises;
+
 
 // const logEvents = require("./logEvent");
 const EventEmitter = require("events");
@@ -30,8 +29,8 @@ const serveFile = async (filepath, contentType, response) => {
   } catch (error) {
     console.log(error);
     emitter.emit("log", `${error.name}: ${error.message}`, 'errorLog.txt');
-    res.statusCode = 500;
-    res.end();
+    response.statusCode = 500;
+    response.end();
   }
 };
 
@@ -100,7 +99,7 @@ const server = http.createServer((req, res) => {
   if (fileExists) {
     serveFile(filepath, contentType, res);
     //if the filepath exists
-    //now serve the everythingv about that file to the client
+    //now serve the everything about that file to the client
   } else {
     switch (path.parse(filepath).base) {
       case "old-page.html":

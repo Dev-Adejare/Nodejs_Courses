@@ -6,6 +6,7 @@ const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
 const rootRoute = require("./routes/roots");
 const subdirRoute = require("./routes/subdir");
+const employeeRoute = require("./routes/api/employee");
 
 const PORT = process.env.PORT || 3500;
 
@@ -36,10 +37,12 @@ app.use(express.json());
 
 //serve static files
 app.use('/', express.static(path.join(__dirname, '/public')));
+app.use('/subdir', express.static(path.join(__dirname, '/public')));
 
 app.use("/", rootRoute);
 
 app.use('/subdir', subdirRoute);
+app.use('/employee', employeeRoute);
 
 
 

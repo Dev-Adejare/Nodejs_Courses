@@ -78,3 +78,10 @@
 20240513	10:46:36	0e3db6a5-4ec7-4637-9778-fabcebd84a86	GET	undefined	/subdir/test
 20240513	10:46:36	756b9f3e-4dbe-4335-b435-d41d307de77b	GET	undefined	/subdir/css/style.css
 20240513	10:46:36	04e12fee-188e-4bbd-bccb-6a6151cc9c77	GET	undefined	/subdir/img/img1.jpg
+20240513	10:48:38	8ff18e62-8b90-465a-b030-38bf01486722	GET	undefined	/subdir/test
+20240513	11:14:12	934a0bb6-a09f-4d90-be71-21d08908b943	GET	undefined	/subdir
+20240513	11:14:18	858461a5-16a2-4030-a23e-55daf6b3ac5b	GET	undefined	/employee
+20240513	11:14:18	141bcbfb-a886-4b42-bd65-3ca1bba58950	GET	undefined	/css/style.css
+20240513	11:14:22	c1718125-7b25-46aa-8907-eb62b5748056	GET	undefined	/employee
+20240513	11:14:22	f2bb067b-ebb1-46a1-8b3d-a639e84aa522	GET	undefined	/css/style.css
+20240513	11:16:49	b9f7d704-b14b-4714-a1b6-04ca20136ad6	GET	undefined	/employee

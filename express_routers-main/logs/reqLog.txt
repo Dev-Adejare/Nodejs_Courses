@@ -85,3 +85,5 @@
 20240513	11:14:22	c1718125-7b25-46aa-8907-eb62b5748056	GET	undefined	/employee
 20240513	11:14:22	f2bb067b-ebb1-46a1-8b3d-a639e84aa522	GET	undefined	/css/style.css
 20240513	11:16:49	b9f7d704-b14b-4714-a1b6-04ca20136ad6	GET	undefined	/employee
+20240513	11:40:39	473fd265-2bc7-4d6f-8838-7d5406d62553	GET	undefined	/
+20240513	11:44:45	6ecd3a8a-ada3-4956-9efa-99949dc00009	GET	undefined	/employee

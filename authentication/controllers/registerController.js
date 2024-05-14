@@ -32,10 +32,10 @@ const handleNewUser = async (req, res) => {
       JSON.stringify(usersDB.users)
     );
     console.log(usersDB.users);
-    res.status(201).json({ 'success': `New User ${user} created` });
+    res.status(201).json({ success: `New User ${user} created` });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 module.exports = { handleNewUser };

@@ -25,6 +25,8 @@ app.use('/', express.static(path.join(__dirname, '/public')));
 
 app.use("/", rootRoute);
 app.use('/register', require('./routes/api/register'))
+app.use('/auth', require('./routes/api/auth'))
+
 
 app.use("/employee", employeeRoute);
 

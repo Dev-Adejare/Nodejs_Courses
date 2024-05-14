@@ -10,7 +10,7 @@ const usersDB = {
   },
 };
 
-const bcypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 const handleLogin = async (req, res) => {
   const { user, pwd } = req.body;
@@ -19,5 +19,19 @@ const handleLogin = async (req, res) => {
       .status(400)
       .json({ message: "Username and password are required" });
 
-  const foundUser = usersDB.users.find;
+  const foundUser = usersDB.users.find((person) => person.username === user);
+
+  if (!foundUser) return res.sendStatus(401); // unauthorized
+
+  const match = await bcrypt.compare(pwd, foundUser.password);
+
+  if (match) {
+    res.json({ success: `User ${user} is logged in` });
+  } else {
+    res.sendStatus(401);
+  }
+};
+
+module.exports = {
+  handleLogin
 };

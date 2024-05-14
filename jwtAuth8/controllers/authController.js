@@ -12,17 +12,17 @@ const usersDB = {
 
 const bcrypt = require("bcrypt");
 
-const jwt = require("jsonwebtoken")
-require('dotenv').config();
-const fsPromises=require('fs').promises;
-const path = require('path');
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
+const fsPromises = require("fs").promises;
+const path = require("path");
 
 const handleLogin = async (req, res) => {
   const { user, pwd } = req.body;
   if (!user || !pwd)
     return res
       .status(400)
-      .json({ message: "Username and password are required!!!" });  //Username & password error message
+      .json({ message: "Username and password are required!!!" }); //Username & password error message
 
   const foundUser = usersDB.users.find((person) => person.username === user);
 
@@ -31,12 +31,35 @@ const handleLogin = async (req, res) => {
   const match = await bcrypt.compare(pwd, foundUser.password);
 
   if (match) {
-    res.json({ success: `User ${user} (Team-Lead) is logged in Successfully!!!` });  // Success message thrw when Successfully logged in
+    
+    
+    
+    // create JWTs
+    const accessToken = jwt.sign(
+      { username: foundUser.username },
+      process.env.ACCESS_TOKEN_SECRET,
+      {expiresIn: '30s'}
+    );
+    const refreshToken = jwt.sign(
+      { username: foundUser.username },
+      process.env.REFRESH_TOKEN_SECRET,
+      {expiresIn: '1d'}
+    );
+
+    const otherUsers = usersDB.users.filter(person => person.username === foundUser.username)
+    const currentUser = {...foundUser, refreshToken};
+    usersDB.setUsers([...otherUsers, currentUser]);
+
+
+
+    res.json({
+      success: `User ${user} (Team-Lead) is logged in Successfully!!!`,
+    }); // Success message thrw when Successfully logged in
   } else {
     res.sendStatus(401);
   }
 };
 
 module.exports = {
-  handleLogin
+  handleLogin,
 };

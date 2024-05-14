@@ -24,6 +24,8 @@ app.use(express.json());
 app.use('/', express.static(path.join(__dirname, '/public')));
 
 app.use("/", rootRoute);
+app.use('/register', require('./routes/api/register'))
+
 app.use("/employee", employeeRoute);
 
 app.all('*', (req, res) => {

@@ -105,3 +105,11 @@
 20240513	12:59:46	6a7c4156-951b-46f7-9107-bfa71905bf01	GET	undefined	/employee/3
 20240513	18:20:49	3d923856-c14d-4fd0-b407-397846ae53e8	PUT	undefined	/employee
 20240513	18:24:17	3e30b4bb-2274-4ae0-b7a8-ed598e8d0570	DELETE	undefined	/employee
+20240514	11:23:31	54baceb0-de86-4ad8-b3a2-d9c5e0e52d08	POST	undefined	/register
+20240514	11:26:40	47cf17db-a974-4acd-87c5-da9d88037dce	POST	undefined	/register
+20240514	11:27:25	719b626b-453f-4795-98cd-4d95d7a5a4e9	POST	undefined	/register
+20240514	11:28:02	cd0cdda5-bc36-48f7-ac14-c8e57547f01e	POST	undefined	/register
+20240514	11:30:10	3cbab195-efdb-466b-bbb2-8921e3856db0	POST	undefined	/register
+20240514	11:31:37	8e519060-8fc3-42d0-9b4f-331349a44cbc	POST	undefined	/register
+20240514	11:32:52	4840c165-7b65-497f-81fc-9cd3d218491d	POST	undefined	/register
+20240514	11:34:24	1b38accc-029c-46e1-b235-1dfda0ebc6dd	POST	undefined	/register

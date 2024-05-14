@@ -1,0 +1,10 @@
+<<<<<<Explanation on how to create an Access and Refresh token>>>>>>>>
+
+PS C:\Users\USER\Desktop\My Web\NodeJs-Courses\jwtAuth8> node
+Welcome to Node.js v20.11.1.
+Type ".help" for more information.
+> require('crypto').randomBytes(64).toString('hex')
+'7e8e3395cacb740e51570328d32458221e6457c8737260fd6a7cc22b34b7d97698772574a05c67212b2fab9fe9e52e0d51c7e500f1a3288479c735c958510186'
+> require('crypto').randomBytes(64).toString('hex')
+
+Copy and paste the token inside the .env file after generated.

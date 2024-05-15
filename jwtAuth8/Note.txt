@@ -8,3 +8,25 @@ Type ".help" for more information.
 > require('crypto').randomBytes(64).toString('hex')
 
 Copy and paste the token inside the .env file after generated.
+
+
+
+Access tokens and refresh tokens are fundamental components of modern web authentication systems, especially in the context of OAuth 2.0. Here's a detailed overview of each:
+
+ACCESS TOKEN
+Purpose:
+Access tokens are used to grant specific permissions and access to resources on behalf of a user. They are typically short-lived.
+
+Characteristics:
+
+Short Lifespan: Access tokens have a limited lifespan (often minutes to hours) to reduce the risk if the token is compromised.
+
+
+
+REFRESH TOKEN
+Purpose:
+Refresh tokens are used to obtain new access tokens without requiring the user to log in again. They are typically long-lived.
+
+Characteristics:
+
+Long Lifespan: Refresh tokens have a much longer lifespan (days, weeks, or even months).

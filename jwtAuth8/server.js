@@ -8,6 +8,7 @@ const rootRoute = require("./routes/roots");
 const employeeRoute = require("./routes/api/employee");
 const corsOptions = require('./config/corsOption');
 const verifyJWT  = require("./middleware/verifyJWT");
+const cookieParser = require("cookie-parser");
 
 const PORT = process.env.PORT || 3500;
 
@@ -18,8 +19,13 @@ app.use(logger);
 app.use(cors(corsOptions));
 
 app.use(express.urlencoded({ extended: false }));
+
 // Built-in middleware for json
 app.use(express.json());
+
+//Middleware for cookies
+app.use(cookieParser());
+
 
 
 // Serve static files
@@ -28,6 +34,7 @@ app.use('/', express.static(path.join(__dirname, '/public')));
 app.use("/", rootRoute);
 app.use('/register', require('./routes/api/register'))   // Register an employee
 app.use('/auth', require('./routes/api/auth'))          //Login Authentication
+app.use('/refresh', require('./routes/refresh'))     //  This setup helps in managing access tokens and refresh tokens, ensuring secure and seamless authentication for users.
 
 app.use(verifyJWT)
 

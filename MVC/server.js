@@ -24,10 +24,6 @@ app.use(express.json());
 app.use('/', express.static(path.join(__dirname, '/public')));
 
 app.use("/", rootRoute);
-app.use('/register', require('./routes/api/register'))   // Register an employee
-app.use('/auth', require('./routes/api/auth'))          //Login Authentication
-
-
 app.use("/employee", employeeRoute);
 
 app.all('*', (req, res) => {

@@ -13,6 +13,4 @@ const verifyJWT = (req, res, nextDay) => {
   });
 };
 
-module.exports = {
-  verifyJWT,
-};
+module.exports = verifyJWT

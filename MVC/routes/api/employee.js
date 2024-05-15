@@ -3,7 +3,6 @@ const router = express.Router();
 const employeesController = require("../../controllers/employeesController")
 
 const path = require("path");
-const verifyJWT  = require("../../middleware/verifyJWT");
 
 //  first method.
 // router.get("/", (req, res) => {
@@ -12,7 +11,7 @@ const verifyJWT  = require("../../middleware/verifyJWT");
 
 router
     .route("/")
-    .get(verifyJWT, employeesController.getAllEmployees)
+    .get(employeesController.getAllEmployees)
     .post(employeesController.createNewEmployee)
     .put(employeesController.updateEmployee)
     .delete(employeesController.deleteEmployee)

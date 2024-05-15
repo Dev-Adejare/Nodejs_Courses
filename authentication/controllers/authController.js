@@ -17,7 +17,7 @@ const handleLogin = async (req, res) => {
   if (!user || !pwd)
     return res
       .status(400)
-      .json({ message: "Username and password are required" });
+      .json({ message: "Username and password are required!!!" });  //Username & password error message
 
   const foundUser = usersDB.users.find((person) => person.username === user);
 
@@ -26,7 +26,7 @@ const handleLogin = async (req, res) => {
   const match = await bcrypt.compare(pwd, foundUser.password);
 
   if (match) {
-    res.json({ success: `User ${user} is logged in` });
+    res.json({ success: `User ${user} (Team-Lead) is logged in Successfully!!!` });  // Success message thrw when Successfully logged in
   } else {
     res.sendStatus(401);
   }

@@ -7,6 +7,7 @@ const errorHandler = require('./middleware/errorHandler');
 const rootRoute = require("./routes/roots");
 const employeeRoute = require("./routes/api/employee");
 const corsOptions = require('./config/corsOption');
+const verifyJWT  = require("./middleware/verifyJWT");
 
 const PORT = process.env.PORT || 3500;
 
@@ -20,12 +21,15 @@ app.use(express.urlencoded({ extended: false }));
 // Built-in middleware for json
 app.use(express.json());
 
+
 // Serve static files
 app.use('/', express.static(path.join(__dirname, '/public')));
 
 app.use("/", rootRoute);
 app.use('/register', require('./routes/api/register'))   // Register an employee
 app.use('/auth', require('./routes/api/auth'))          //Login Authentication
+
+app.use(verifyJWT)
 
 
 app.use("/employee", employeeRoute);

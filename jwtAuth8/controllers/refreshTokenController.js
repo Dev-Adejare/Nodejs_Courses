@@ -1,4 +1,4 @@
-const { decode } = require ("jsonwebtoken");
+const { decode } = require("jsonwebtoken");
 
 const usersDB = {
   users: require("../model/users.json"),
@@ -15,31 +15,27 @@ const handleRefreshToken = (req, res) => {
   if (!cookies?.jwt) return res.sendStatus(401); // Unauthorized if no token provided
   const refreshToken = cookies.jwt;
   const foundUser = usersDB.users.find(
-    person => person.refreshToken === refreshToken
+    (person) => person.refreshToken === refreshToken
   ); //The code finds a user in the database whose refresh token matches the provided token.
 
   if (!foundUser) return res.sendStatus(403); // Forbidden if no token provided
 
   // Evaluate JWT
 
-  const roles = Object.values(foundUser.roles)
+  const roles = Object.values(foundUser.roles);
 
   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
     if (err || foundUser.username !== decoded.username)
       return res.sendStatus(403);
-   
-   
-    const accessToken = jwt.sign(
-    { "UserInfo": {"username": decoded.username }},
-    
-    
-    process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "60s" }
 
-   )
-   res.json({accessToken})
-  }
-);
+    const accessToken = jwt.sign(
+      { "UserInfo": { "username": decoded.username, "roles": roles } },
+
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: "60s" }
+    );
+    res.json({ accessToken });
+  });
 };
 
-module.exports = {handleRefreshToken}
+module.exports = { handleRefreshToken };

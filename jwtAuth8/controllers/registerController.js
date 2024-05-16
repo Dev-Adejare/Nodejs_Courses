@@ -24,8 +24,8 @@ const handleNewUser = async (req, res) => {
     // encrypting the password
     const hashedPwd = await bcrypt.hash(pwd, 10);      // The number 10 indicates the cost factor, which determines how computationally intensive the hashing process is. Higher values increase the security but also require more processing time.
 
-    //storing new user
-    const newUser = { username: user, password: hashedPwd };
+    //storing the new user
+    const newUser = { "username": user, "roles":{"User": 2001}, "password": hashedPwd };
     usersDB.setUsers([...usersDB.users, newUser]);      // Add new user
     await fsPromises.writeFile(
       path.join(__dirname, "..", "model", "users.json"),

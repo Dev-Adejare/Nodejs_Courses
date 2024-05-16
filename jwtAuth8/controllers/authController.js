@@ -31,33 +31,38 @@ const handleLogin = async (req, res) => {
   const match = await bcrypt.compare(pwd, foundUser.password);
 
   if (match) {
-    
-    
-    
+    const roles = Object.values(foundUser.roles);
+
     // create JWTs
     const accessToken = jwt.sign(
-      { username: foundUser.username },
+      { "UserInfo": { "username" : foundUser.username, "roles": roles } },
       process.env.ACCESS_TOKEN_SECRET,
-      {expiresIn: '30s'}
+      { expiresIn: "30s" }
     );
+    
+
+    const roles = Object.values(foundUser.roles);
     const refreshToken = jwt.sign(
-      { username: foundUser.username },
+      { "username": foundUser.username },
       process.env.REFRESH_TOKEN_SECRET,
-      {expiresIn: '1d'}
+      { expiresIn: "1d" }
     );
 
-    const otherUsers = usersDB.users.filter(person => person.username !== foundUser.username)
-    const currentUser = {...foundUser, refreshToken};
+    const otherUsers = usersDB.users.filter(
+      (person) => person.username !== foundUser.username
+    );
+    const currentUser = { ...foundUser, refreshToken };
     usersDB.setUsers([...otherUsers, currentUser]);
     await fsPromises.writeFile(
       path.join(__dirname, "..", "model", "users.json"),
       JSON.stringify(usersDB.users)
-    )
-    res.cookie('jwt', refreshToken, {httpOnly: true, maxAge: 24* 60* 60* 1000})
+    );
+    res.cookie("jwt", refreshToken, {
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000,
+    });
 
-    res.json({accessToken})
-
-
+    res.json({ accessToken });
 
     res.json({
       success: `User ${user} (Team-Lead) is logged in Successfully!!!`,

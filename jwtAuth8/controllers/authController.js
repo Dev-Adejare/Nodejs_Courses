@@ -41,7 +41,7 @@ const handleLogin = async (req, res) => {
     );
     
 
-    const roles = Object.values(foundUser.roles);
+    // const roles = Object.values(foundUser.roles);
     const refreshToken = jwt.sign(
       { "username": foundUser.username },
       process.env.REFRESH_TOKEN_SECRET,

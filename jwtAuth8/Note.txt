@@ -9,6 +9,16 @@ Type ".help" for more information.
 
 Copy and paste the token inside the .env file after generated.
 
+Authentication is the process of verifying the identity of a user or system. It's about confirming that someone is who they claim to be. This typically involves checking credentials such as usernames and passwords, but can also include more advanced methods like biometric verification, multi-factor authentication (MFA), and OAuth tokens
+
+
+Authorization is the process of determining what an authenticated user is allowed to do. It checks the user's permissions and grants or denies access to resources or actions based on those permissions
+
+Authentication=>>>>>> Confirms identity (e.g., logging in).
+Authorization=>>>>>>> Determines permissions (e.g., what logged-in users can do).
+
+Authorization occurs after authentication and is usually governed by roles and policies.
+
 
 
 Access tokens and refresh tokens are fundamental components of modern web authentication systems, especially in the context of OAuth 2.0. Here's a detailed overview of each:

@@ -35,7 +35,7 @@ app.use("/", rootRoute);
 app.use('/register', require('./routes/api/register'))   // Register an employee
 app.use('/auth', require('./routes/api/auth'))          //Login Authentication
 app.use('/refresh', require('./routes/refresh'))     //  This setup helps in managing access tokens and refresh tokens, ensuring secure and seamless authentication for users.
-app.use('/logout', require('./routes/api/logout'))   //  
+app.use('/logout', require('./routes/api/logout'))   // Give access for logout and return forbidden error 204  
 
 
 

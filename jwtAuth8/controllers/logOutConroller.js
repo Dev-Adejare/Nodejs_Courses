@@ -33,18 +33,7 @@ const handleLogout = async (req, res) => {
   res.clearCookies("jwt", { httpONLY: true });
   return res.sendStatus(204);
 
-  // Evaluate JWT
-
-  //   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
-  //     if (err || foundUser.username !== decoded.username)
-  //       return res.sendStatus(403);
-  //     const accessToken = jwt.sign(
-  //       { username: decoded.username },
-  //       process.env.ACCESS_TOKEN_SECRET,
-  //       { expiresIn: "60s" }
-  //     );
-  //     res.json({ accessToken });
-  //   });
+  
 };
 
 module.exports = { handleLogout };

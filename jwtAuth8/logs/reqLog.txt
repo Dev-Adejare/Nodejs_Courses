@@ -275,3 +275,8 @@
 20240516	15:19:05	c04cc4bf-6fde-4219-8d96-97d03145876c	POST	undefined	/auth
 20240516	15:19:26	ae59a538-556c-4f67-84d9-16f4cfc8d188	POST	undefined	/auth
 20240516	15:19:41	4f6b5c4d-b9e5-4912-8bc0-0832eeb7c6af	GET	undefined	/refresh
+20240516	16:40:48	30f2db0d-284f-41ec-bddc-f8e6dac9c366	POST	undefined	/auth
+20240516	16:40:56	e8449ecc-7571-4f2a-afa2-a4d302965142	POST	undefined	/auth
+20240516	16:41:15	f3c5b00b-b62f-454c-b4cf-7e9ec84bbeda	GET	undefined	/refresh
+20240516	17:09:47	964a2080-0bcc-44d9-a37c-29bc1948d53f	POST	undefined	/auth
+20240516	17:10:01	8ffc42c1-649b-45db-a1b4-b61c955210a6	GET	undefined	/refresh

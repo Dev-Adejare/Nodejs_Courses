@@ -23,6 +23,7 @@ const handleRefreshToken = (req, res) => {
   // Evaluate JWT
 
   const roles = Object.values(foundUser.roles);
+  console.log(roles);
 
   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
     if (err || foundUser.username !== decoded.username)

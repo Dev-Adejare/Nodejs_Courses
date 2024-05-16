@@ -6,5 +6,9 @@ const verifyRoles = (...allowedRoles) => {
       rolesArray.includes(role).find((val) => val === true)
     );
     if (!result) return res.sendStatus(401);
+
+    next();
   };
 };
+
+module.exports = verifyRoles

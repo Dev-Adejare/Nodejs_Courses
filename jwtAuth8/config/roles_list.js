@@ -5,4 +5,4 @@ const ROLES_LISTS = {
 }
 
 
-modules.exports = ROLES_LISTS;
+module.exports = ROLES_LISTS;

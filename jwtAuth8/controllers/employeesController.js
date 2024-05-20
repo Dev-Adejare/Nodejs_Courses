@@ -41,7 +41,7 @@ const updateEmployee = (req, res) => {
       .json({ Message: `Employee with no ID: ${req.body.id} not found` });
   }
   if (req.body.firstname) employee.firstname = req.body.firstname;
-  if (req.body.lastname) employee.firstname = req.body.lastname;
+  if (req.body.lastname) employee.lastname = req.body.lastname;
   if (req.body.role) employee.role = req.body.role;
 
   const filteredEmployee = data.employees.filter(

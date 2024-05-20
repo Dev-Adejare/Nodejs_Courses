@@ -370,3 +370,5 @@
 20240520	12:21:25	004efafc-1837-46c2-aaba-a40c8af6d3b0	DELETE	undefined	/employee/2
 20240520	12:21:41	27673232-c6f5-4729-9d94-cf342b8b9228	POST	undefined	/auth
 20240520	12:21:55	5bccf917-ab78-4cb1-bd07-5d03c03df448	DELETE	undefined	/employee
+20240520	14:24:08	8b1ac7cc-376c-4abf-9910-1e8f25730d28	POST	undefined	/auth
+20240520	14:24:27	c25aa414-4bd0-43db-b633-987859afed9c	GET	undefined	/employee/3?id=2

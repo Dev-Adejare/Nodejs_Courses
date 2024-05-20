@@ -16,7 +16,6 @@ const connectDB = require("./config/dbConn");
 const PORT = process.env.PORT || 3500;
 
 //connect to mongo DB
-
 connectDB();
 
 // Custom middleware logger

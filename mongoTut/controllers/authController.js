@@ -52,9 +52,12 @@ const handleLogin = async (req, res) => {
       sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
     });
-    res.json({ accessToken });
+
+    //Send authorization roles and access token to user
+
+    res.json({ roles, accessToken });
   } else {
-    res.sendStatus(401);
+    res.sendStatus(401); // Unauthorized
   }
 };
 

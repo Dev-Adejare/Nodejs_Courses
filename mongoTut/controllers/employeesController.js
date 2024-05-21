@@ -24,7 +24,7 @@ const createNewEmployee = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-};
+}; 
 
 const updateEmployee = async (req, res) => {
   if (!req?.body?.id) {
@@ -59,7 +59,7 @@ const deleteEmployee = async (req, res) => {
   if (!employee) {
     return res
       .status(204)
-      .json({ message: `No employee matches: ID ${req.body.id}` });
+      .json({ message: `No employee matches: ID ${req.body.id}` });  //req.body.id is typically used in POST, PUT, and PATCH requests where the body contains data.
   }
   const result = await employee.deleteOne();
   res.json(result);
@@ -69,7 +69,8 @@ const getEmployee = async (req, res) => {
   if (!req?.params?.id) {
     return res.status(400).json({ Message: "Employee ID is required" });
   }
-  const employee = await Employee.findOne({ _id: req.params.id }).exec();
+  const employee = await Employee.findOne({ _id: req.params.id }).exec();  // req.params.id is typically used in GET, PUT, and DELETE requests where the URL contains data.
+
 
   if (!employee) {
     return res

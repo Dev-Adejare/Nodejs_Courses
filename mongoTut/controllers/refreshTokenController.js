@@ -8,10 +8,10 @@
 // };
 
 const User = require("../model/User");
-
 const jwt = require("jsonwebtoken");
 
-const handleRefreshToken = (req, res) => {
+
+const handleRefreshToken =  async (req, res) => {
   const cookies = req.cookies;
   if (!cookies?.jwt) return res.sendStatus(401); // Unauthorized if no token provided
   const refreshToken = cookies.jwt;

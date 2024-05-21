@@ -1,11 +1,13 @@
-const { decode } = require("jsonwebtoken");
+// const { decode } = require("jsonwebtoken");
 
-const usersDB = {
-  users: require("../model/users.json"),
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
+// const usersDB = {
+//   users: require("../model/users.json"),
+//   setUsers: function (data) {
+//     this.users = data;
+//   },
+// };
+
+const User = require("../model/User");
 
 const jwt = require("jsonwebtoken");
 

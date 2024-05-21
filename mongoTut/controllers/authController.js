@@ -16,14 +16,14 @@ const handleLogin = async (req, res) => {
       .status(400)
       .json({ message: "Username and password are required!!!" }); //Username & password error message
 
-  const foundUser = await User.findOne({ username: user }).exec();  //The code finds a user in the database whose username matches the username provided.
+  const foundUser = await User.findOne({ username: user }).exec(); //The code finds a user in the database whose username matches the username provided.
 
   if (!foundUser) return res.sendStatus(401); // unauthorized
 
-  const match = await bcrypt.compare(pwd, foundUser.password);  //The code compares the password with username provided while bcrypt harsh the password
+  const match = await bcrypt.compare(pwd, foundUser.password); //The code compares the password with username provided while bcrypt harsh the password
 
   if (match) {
-    const roles = Object.values(foundUser.roles); // 
+    const roles = Object.values(foundUser.roles).filter(Boolean); //  The code extracts all the values from the roles property of the foundUser object and filters out any falsy values, resulting in an array of only truthy values from the roles object.
 
     // create JWTs
     const accessToken = jwt.sign(
@@ -39,25 +39,20 @@ const handleLogin = async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    const otherUsers = usersDB.users.filter(
-      (person) => person.username !== foundUser.username
-    );
-    const currentUser = { ...foundUser, refreshToken };
-    usersDB.setUsers([...otherUsers, currentUser]);
-    await fsPromises.writeFile(
-      path.join(__dirname, "..", "model", "users.json"),
-      JSON.stringify(usersDB.users)
-    );
+    // Saving refreshToken with current user
+    foundUser.refreshToken = refreshToken;
+    const result = await foundUser.save();
+    console.log(result);
+    console.log(roles);
+
+    //Create secure cookie with refresh token
     res.cookie("jwt", refreshToken, {
       httpOnly: true,
+      secure: true,
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
     });
-
     res.json({ accessToken });
-
-    res.json({
-      success: `User ${user} (Team-Lead) is logged in Successfully!!!`,
-    }); // Success message throw when Successfully logged in
   } else {
     res.sendStatus(401);
   }

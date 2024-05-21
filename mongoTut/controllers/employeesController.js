@@ -54,7 +54,7 @@ const deleteEmployee = async (req, res) => {
   if (!req?.body?.id) {
     return res.status(400).json({ Message: "Employee ID is required" });
   }
-  const employee = await Employee.deleteOne({ _id: req.body.id }).exec();
+  const employee = await Employee.findOne({ _id: req.body.id }).exec();
 
   if (!employee) {
     return res

@@ -31,11 +31,6 @@ const updateEmployee = async (req, res) => {
     return res.status(400).json({ Message: "ID parameter is required" });
   }
 
-  if (!employee) {
-    return res
-      .status(400)
-      .json({ message: Employee`ID ${req.body.id} not found ` });
-  }
 
   const employee = await Employee.findOne({ _id: req.body.id }).exec();
   if (!employee) {

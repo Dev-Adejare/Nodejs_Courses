@@ -33,16 +33,20 @@ Characteristics:
 
 Short Lifespan: Access tokens have a limited lifespan (often minutes to hours) to reduce the risk if the token is compromised.
 
-
-
 REFRESH TOKEN
 Purpose:
 Refresh tokens are used to obtain new access tokens without requiring the user to log in again. They are typically long-lived.
 
 Characteristics:
-
 Long Lifespan: Refresh tokens have a much longer lifespan (days, weeks, or even months).
 
+
+
+CRUD=>>>> acronym for CREATE-READ-UPDATE-DELETE
+POST for Create
+GET for Read
+PUT/PATCH for Update
+DELETE for Delete 
 CREATE: This operation involves adding new data to the database. It corresponds to the SQL INSERT statement.
 Example: Adding a new user to the users table in a database.
 

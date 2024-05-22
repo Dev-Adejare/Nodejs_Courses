@@ -1,3 +1,5 @@
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<< BACK-END-NOTE  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 <<<<<<Explanation on how to create an Access and Refresh token>>>>>>>>
 
 httpOnly: =>>>>>>>>>>  The HttpOnly attribute is a security feature that can be applied to cookies, making them inaccessible to JavaScript running in the browser.This helps mitigate certain types of attacks, such as cross-site scripting (XSS), by preventing malicious scripts from accessing sensitive cookie data.

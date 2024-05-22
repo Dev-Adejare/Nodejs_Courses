@@ -461,3 +461,8 @@
 20240521	18:08:42	64cfb236-137d-42eb-87bc-5ca4308e54f8	GET	undefined	/employee
 20240521	18:14:17	c6f44f21-2204-4198-a4b4-efdd88a79f31	POST	undefined	/auth
 20240521	18:14:33	d282f869-1c70-4704-aed7-5aecc34a3e88	DELETE	undefined	/employee
+20240522	09:41:06	0ad6efa4-b3e8-4a8f-84b5-efb6cca7dc0b	POST	undefined	/auth
+20240522	09:41:23	e8b9b1a6-7804-4403-a553-f57e04db5c32	GET	undefined	/employee
+20240522	09:41:44	6af493fd-bc11-41b6-bc52-fa6a4ad4e7e6	GET	undefined	/employee/3?id=2
+20240522	09:42:20	88e4bbfe-7d36-4b31-a226-a02728554a7e	GET	undefined	/refresh
+20240522	09:42:40	6040c1f3-1c00-4841-8dda-33db2211d7c6	GET	undefined	/employee

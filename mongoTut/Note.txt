@@ -42,3 +42,14 @@ Refresh tokens are used to obtain new access tokens without requiring the user t
 Characteristics:
 
 Long Lifespan: Refresh tokens have a much longer lifespan (days, weeks, or even months).
+
+CREATE: This operation involves adding new data to the database. It corresponds to the SQL INSERT statement.
+Example: Adding a new user to the users table in a database.
+
+READ: This operation involves retrieving data from the database. It corresponds to the SQL SELECT statement.
+Example: Fetching a list of all users from the users table.
+
+UPDATE: This operation involves modifying existing data in the database. It corresponds to the SQL UPDATE statement.
+Example: Changing the email address of a user in the users table.
+
+DELETE: This operation involves removing data from the database. It corresponds to the SQL DELETE statement.

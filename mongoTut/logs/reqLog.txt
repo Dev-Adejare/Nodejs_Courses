@@ -477,3 +477,11 @@
 20240522	10:15:29	72fba30e-c670-46a2-b2de-8d32f66b347d	POST	undefined	/auth
 20240522	10:15:48	55e5ac87-b8da-4ecb-a390-c370312d49a3	GET	undefined	/refresh
 20240522	10:16:11	1da5dbdc-5a6f-4cf0-a4bf-9e87f3ccd0bb	GET	undefined	/employee
+20240522	10:34:59	e823227e-a15b-4d5d-9182-5bc85aacb2c8	POST	undefined	/auth
+20240522	10:35:24	ab37c449-ab4a-44a6-b24e-13e7b7f4dcc2	GET	undefined	/refresh
+20240522	10:35:57	7b009dd4-5b7e-4743-9503-3c3ff163fb99	POST	undefined	/auth
+20240522	10:36:05	6d06ba0a-ef11-428b-afae-cb942471e467	GET	undefined	/refresh
+20240522	12:57:36	6372ec26-e202-4c80-a50c-52aeb7055658	POST	undefined	/auth
+20240522	12:57:51	9be0106d-26e8-4c56-ad12-5804729dc390	GET	undefined	/employee
+20240522	13:02:17	9c05c602-945a-4f8b-a19b-535488e26078	POST	undefined	/auth
+20240522	13:02:33	2ecb9564-1393-4870-8f75-dfc95487d469	GET	undefined	/employee

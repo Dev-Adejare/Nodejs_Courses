@@ -5,7 +5,6 @@ const data = {
   },
 };
 
-
 const getAllEmployees = (req, res) => {
   res.json(data.employees);
 };
@@ -22,7 +21,7 @@ const createNewEmployee = (req, res) => {
     return res
       .status(400)
       .json({
-        message: "Firsy and last name is required thank yearsToQuarters.😊",
+        message: "First and last name is required thank yearsToQuarters.😊",
       });
   }
   data.setEmployee([...data.employees, newEmployee]);

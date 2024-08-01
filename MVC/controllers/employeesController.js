@@ -5,7 +5,7 @@ const data = {
   },
 };
 
-// const getAllEmployees = async ((req, res) => {})
+
 const getAllEmployees = (req, res) => {
   res.json(data.employees);
 };

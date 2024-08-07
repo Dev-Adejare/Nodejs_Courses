@@ -1,7 +1,3 @@
-// console.log("Hello Nodejs!");
-// console.log("Welcome here!");
-
-
 
 // const os = require("os");
 

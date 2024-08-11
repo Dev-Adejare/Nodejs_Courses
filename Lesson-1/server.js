@@ -3,9 +3,6 @@
 
 
 
-// const os = require("os");
-
-
 // const path = require('path');
 // const {add, div, mult, sub} = require('./math');
 // const {add} = require('./math');

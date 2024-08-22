@@ -1,2 +1,4 @@
 This code is a basic Node.js HTTP server that listens for incoming requests and logs the requested URL and HTTP method to the console. Let's break it down line by line:
 
+1. const http = require("http");: This line imports the built-in Node.js http module, which allows you to create HTTP servers and handle HTTP requests and responses.
+

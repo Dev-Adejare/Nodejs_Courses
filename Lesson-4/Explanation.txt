@@ -12,4 +12,9 @@ This code is a basic Node.js HTTP server that listens for incoming requests and 
 
 6. const EventEmitter = require("events");: This line imports the built-in Node.js events module, which provides an EventEmitter class that allows you to create and emit custom events.
 
+7. class Emitter extends EventEmitter {}: This line creates a new class Emitter that extends the EventEmitter class. This class can be used to emit and handle custom events.
+
+8. const myEmitter = new Emitter();: This line creates a new instance of the Emitter class, named myEmitter, which can be used to emit and handle events.
+
+9. const PORT = process.env.PORT || 3500;: This line defines the port number on which the server will listen for incoming HTTP requests. It first checks if there's a port number specified in the environment variables (process.env.PORT) and uses that if available. Otherwise, it defaults to port 3500.
 

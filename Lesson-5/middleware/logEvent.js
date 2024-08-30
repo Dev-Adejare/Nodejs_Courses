@@ -19,9 +19,7 @@ const logEvent = async (message, logName) => {
       path.join(__dirname, "logs", logName),
       logItem
     );
-  } catch (err) {
-    console.log(err);
-  }
+  } 
 };
 
 
